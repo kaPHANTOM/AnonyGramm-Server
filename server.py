@@ -3,7 +3,7 @@ from flask import Flask, jsonify
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio.run(app, host='0.0.0.0', port=port, allow_unsafe_werkzeug=True)
 
 users = {}
 
