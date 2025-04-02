@@ -3,7 +3,7 @@ from flask import Flask, jsonify
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
-socketio.run(app, host='0.0.0.0', port=port, allow_unsafe_werkzeug=True)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 users = {}
 
@@ -26,6 +26,4 @@ def handle_connect():
 def handle_message(data):
     emit('message', data, broadcast=True)
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    socketio.run(app, host='0.0.0.0', port=port)
+# Без socketio.run — Gunicorn запустить додаток
