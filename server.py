@@ -26,6 +26,6 @@ def handle_connect():
 def handle_message(data):
     emit('message', data, broadcast=True)
 
-if name == 'main':
+if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     socketio.run(app, host='0.0.0.0', port=port)
